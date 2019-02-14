@@ -13,12 +13,20 @@
 */
 
 /* ------------------------------------------------- */
+// set variables for mins, secs and the time left.
 var minsLeft = 30;
 var secsLeft = 0;
 var timeLeft = minsLeft * 60 + secsLeft;
-
+// This sets the CountDown function to run evrey second.
 var clockID = setInterval("countDown()", 1000);
-
+/* This function sets the minsLeft var to timeLeft divided by 60 
+also sets the secsLeft var to timeLeft - 60 * the minsLeft variable.
+then establishes two new vars that are set to the addleadingzero function with
+the minsLeft and secsLeft as the parameters.
+Then sets the text content of the minutes and seconds ID equal to the minsString 
+and secsString variables.
+calls the checkTimer function then decreases timeleft by one.
+*/
 function countDown() {
     minsLeft = Math.floor(timeLeft / 60);
     secsLeft = timeLeft - 60 * minsLeft;
@@ -29,7 +37,9 @@ function countDown() {
     checkTimer();
     timeLeft--;
 }
-
+/*
+This function just inserts an elment adjacent to the element ID of TimeHead before the end of the tag.
+*/
 function stopClock() {
     document.getElementById("TimeHead").insertAdjacentElement("beforeend", `<br /> (Order Expired),`);
     clearInterval();
